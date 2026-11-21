@@ -53,4 +53,12 @@ class Temperature:
         else:
             return ValueError
         return new_temp
+
+
+    def __repr__(self) -> str:
+        return f'Temperature({self.value}, {self.unit})'
+
+    def __str__(self) -> str:
+        return f'{self.value:.2f} {self.unit}'
+
     
