@@ -1,11 +1,13 @@
 
 
-class temperature:
+class Temperature:
+
+
     def __init__(self, value, unit):
         'Temperature class with value and unit attributes'
         self.value = value
         self.unit = unit
-
+        
         #Specifiy the valid units for this class
         valid_units = ['C', 'F', 'K']
 
@@ -38,3 +40,17 @@ class temperature:
             if self.unit == 'C':
                 to_kelvin = (self.value + 273.15)
             return to_kelvin
+
+    # Function identifies what the target unit is and 
+    # calls the appropriate mothod to calculate new temp
+    def convert_to(self, target_unit: str) -> Temperature:
+        if target_unit.upper() == 'C':
+            new_temp = self.to_celsius()
+        elif target_unit.upper() == 'F':
+            new_temp = self.to_farenheit()
+        elif target_unit.upper() == 'K':
+            new_temp = self.to_kelvin()
+        else:
+            return ValueError
+        return new_temp
+    
