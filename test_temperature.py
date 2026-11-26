@@ -106,7 +106,11 @@ def test_comparisons_across_units():
 
 # 6. Formatting tests
 def test_str_and_repr():
-    t = Temperature(25, "C")
+    t_c = Temperature(25, "C")
+    t_f = Temperature(77, "F")
+    t_k = Temperature(300, "K")
 
-    assert str(t) == "25°C"
-    assert repr(t) == "Temperature(25, 'C')"
+    assert str(t_c) == "25.00 °C"
+    assert str(t_f) == "77.00 °F"
+    assert str(t_k) == "300.00 K"
+    assert repr(t_c) == "Temperature(25.0, 'C')"

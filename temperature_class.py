@@ -82,7 +82,7 @@ class Temperature:
 
     # Function identifies what the target unit is and 
     # calls the appropriate method to calculate new temp
-    def convert_to(self, target_unit: str) -> Temperature:
+    def convert_to(self, target_unit: str) -> 'Temperature':
         if target_unit.upper() == 'C':
             new_temp = self.to_celsius()
         elif target_unit.upper() == 'F':
