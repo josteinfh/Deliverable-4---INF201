@@ -9,6 +9,7 @@ class Temperature:
 
     def __init__(self, value, unit ="C"):
         """Initialize a Temperature instance with a value and unit."""
+        # Case-insensitive unit handling
         unit = unit.upper()
 
         # Specify the valid units for this class
@@ -44,7 +45,11 @@ class Temperature:
     # Converts values from F and K to C 
     def to_celsius(self) -> float:
         if self.unit == 'F':
-            return (self.value - 32) * (5/9)
+            result = (self.value - 32) * (5/9)
+            # Check if the result is below absolute zero and within tolerance, if so return -273.15
+            if -273.15 - self.TOLERANCE <= result < -273.15:
+                return -273.15
+            return result
         
         elif self.unit == 'K':
             return (self.value - 273.15)
@@ -67,8 +72,8 @@ class Temperature:
     def to_kelvin(self) -> float:
         if self.unit == 'F':
             result = (self.value - 32) * (5/9) + 273.15
-            # Check if the result is below absolute zero, if so return 0.0
-            if self.TOLERANCE <= result < 0:
+            # Check if the result is below absolute zero and within tolerance, if so return 0.0
+            if -self.TOLERANCE <= result < 0:
                 return 0.0
             return result
         

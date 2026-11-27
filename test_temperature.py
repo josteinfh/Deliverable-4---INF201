@@ -91,6 +91,10 @@ def test_comparisons_across_units():
     assert freezing_c == freezing_f
     assert not (freezing_c == boiling_k)
 
+    # Inequality
+    assert freezing_c != boiling_k
+    assert not (freezing_f != freezing_c)
+
     # Strict inequalities
     assert freezing_c < boiling_k
     assert freezing_f < warm_f
